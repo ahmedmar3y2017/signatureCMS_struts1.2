@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts-config PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+        "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+
+<struts-config>
+
+
+    <form-beans>
+        <form-bean name="signatureForm"
+                   type="signatureForm" >
+
+        </form-bean>
+    </form-beans>
+
+    <action-mappings>
+
+
+        <action
+                path="/Hello"
+                type="org.apache.struts.actions.ForwardAction"
+                parameter="/hello.jsp"/>
+
+
+        <action
+                path="/Welcome"
+                type="org.apache.struts.actions.ForwardAction"
+                parameter="/Welcome.jsp"/>
+
+        <action path="/saveSettings"  parameter="saveSettings"
+                type="signatureAction"
+                name="signatureForm" validate="true" input="/CMSSignatureModel.do" >
+            <forward name="success" path="/CMSSignatureModel.do" />
+            <forward name="failed" path="/error.jsp"/>
+
+        </action>
+
+        <action path="/CMSSignatureModel"  parameter="selectSettings"
+                type="signatureAction"
+        >
+            <forward name="success" path="/Welcome.do"/>
+
+        </action>
+
+
+
+
+    </action-mappings>
+    <controller processorClass="org.apache.struts.tiles.TilesRequestProcessor"/>
+    <message-resources parameter="MessageResources"/>
+    <plug-in className="org.apache.struts.tiles.TilesPlugin">
+        <set-property value="/WEB-INF/tiles-defs.xml" property="definitions-config"/>
+    </plug-in>
+    <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+        <set-property value="/org/apache/struts/validator/validator-rules.xml,/WEB-INF/validation.xml"
+                      property="pathnames"/>
+    </plug-in>
+
+
+</struts-config>

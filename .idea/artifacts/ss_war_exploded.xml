@@ -1,0 +1,16 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="ss:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/ss_war_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="ss/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="ss" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="struts-tiles" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>
